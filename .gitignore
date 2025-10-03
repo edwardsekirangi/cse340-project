@@ -1,0 +1,8 @@
+#Ignore the .env file
+.env
+#Ignore node_modules
+node_modules
+
+#Ignore pnpm-lock.yaml
+pnpm-lock.yaml
+
