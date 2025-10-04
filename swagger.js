@@ -15,7 +15,8 @@ const swaggerOptions = {
             }
         },
         servers: [
-            { url: "http://localhost:3500", description: "Development server" }
+            { url: "http://localhost:3500", description: "Development server" },
+            { url: "https://cse341-project-k4tz.onrender.com", description: "Production server" }
         ]
     },
     apis: ["./routes/*.js"]
