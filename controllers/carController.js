@@ -14,7 +14,7 @@ export const getCars = async (req, res, next) => {
 //Get car by ID
 export const getCarById = async (req, res, next) => {
     try {
-        const car = await Car.findById(req.pparams.id);
+        const car = await Car.findById(req.params.id);
         if (!car) return next(createError(404, "Car not found"));
         res.status(200).json(car);
     } catch (err) {
