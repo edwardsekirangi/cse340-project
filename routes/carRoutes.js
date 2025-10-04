@@ -1,10 +1,10 @@
 import express from "express";
 import {
-  getCars,
-  getCarById,
-  createCar,
-  updateCar,
-  deleteCar
+    getCars,
+    getCarById,
+    createCar,
+    updateCar,
+    deleteCar,
 } from "../controllers/carController.js";
 
 const router = express.Router();

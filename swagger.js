@@ -11,15 +11,18 @@ const swaggerOptions = {
             description: "A simple Express Car API",
             contact: {
                 name: "Edward Sekirangi",
-                email: "sekirangi1@gmail.com"
-            }
+                email: "sekirangi1@gmail.com",
+            },
         },
         servers: [
             { url: "http://localhost:3500", description: "Development server" },
-            { url: "https://cse341-project-k4tz.onrender.com", description: "Production server" }
-        ]
+            {
+                url: "https://cse341-project-k4tz.onrender.com",
+                description: "Production server",
+            },
+        ],
     },
-    apis: ["./routes/*.js"]
+    apis: ["./routes/*.js"],
 };
 
 export const swaggerSpec = swaggerJSDoc(swaggerOptions);

@@ -1,6 +1,5 @@
 import Car from "../models/car.js";
 import createError from "http-errors";
-import express from "express";
 
 //Get all cars
 export const getCars = async (req, res, next) => {
@@ -37,7 +36,11 @@ export const createCar = async (req, res, next) => {
 //Update a car by Id
 export const updateCar = async (req, res, next) => {
     try {
-        const updatedCar = await Car.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        const updatedCar = await Car.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
         if (!updatedCar) return next(createError(404, "Car not found"));
         res.status(200).json(updatedCar);
     } catch (err) {
@@ -51,7 +54,7 @@ export const deleteCar = async (req, res, next) => {
         const deletedCar = await Car.findByIdAndDelete(req.params.id);
         if (!deletedCar) return next(createError(404, "Car not found"));
         res.status(200).json({ message: "Car deleted successfully" });
-    }catch (err) {
+    } catch (err) {
         next(err);
     }
 };
