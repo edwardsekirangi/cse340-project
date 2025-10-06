@@ -2,6 +2,7 @@ import express from "express";
 import { connectDB } from "./db/connect.js";
 import carRoutes from "./routes/carRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 const app = express();
 //connecting to dotenv
 import dotenv from "dotenv";
@@ -11,6 +12,7 @@ app.use(express.json());
 
 //routes
 app.use("/cars", carRoutes);
+app.use("/reviews", reviewRoutes);
 
 //Root route
 app.get("/", (req, res) => {

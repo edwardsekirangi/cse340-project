@@ -21,8 +21,7 @@ const carSchema = new mongoose.Schema(
             enum: ["Automatic", "Manual"],
         },
         available: { type: Boolean, default: true },
-    },
-    { timestamps: true }
+    }
 );
 
 export default mongoose.model("Car", carSchema);
