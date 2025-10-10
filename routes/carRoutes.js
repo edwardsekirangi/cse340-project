@@ -6,6 +6,7 @@ import {
     updateCar,
     deleteCar,
 } from "../controllers/carController.js";
+import isAuthenticated from "../middleware/authenticate.js";
 
 const router = express.Router();
 
@@ -75,7 +76,7 @@ const router = express.Router();
  *         description: Car created
  */
 router.get("/", getCars);
-router.post("/", createCar);
+router.post("/", isAuthenticated, createCar);
 
 /**
  * @swagger
@@ -123,7 +124,7 @@ router.post("/", createCar);
  *         description: Car deleted
  */
 router.get("/:id", getCarById);
-router.put("/:id", updateCar);
-router.delete("/:id", deleteCar);
+router.put("/:id", isAuthenticated, updateCar);
+router.delete("/:id", isAuthenticated, deleteCar);
 
 export default router;

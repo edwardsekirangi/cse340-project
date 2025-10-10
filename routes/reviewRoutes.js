@@ -6,6 +6,7 @@ import {
     updateReview,
     deleteReview,
 } from "../controllers/reviewController.js";
+import isAuthenticated from "../middleware/authenticate.js";
 
 const router = express.Router();
 
@@ -69,7 +70,7 @@ const router = express.Router();
  *         description: Review created
  */
 router.get("/", getReviews);
-router.post("/", createReview);
+router.post("/", isAuthenticated, createReview);
 
 /**
  * @swagger
@@ -120,7 +121,7 @@ router.post("/", createReview);
  *         description: Review deleted
  */
 router.get("/:id", getReviewById);
-router.put("/:id", updateReview);
-router.delete("/:id", deleteReview);
+router.put("/:id", isAuthenticated, updateReview);
+router.delete("/:id", isAuthenticated, deleteReview);
 
 export default router;

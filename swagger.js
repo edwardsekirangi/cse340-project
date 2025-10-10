@@ -26,4 +26,4 @@ const swaggerOptions = {
 };
 
 export const swaggerSpec = swaggerJSDoc(swaggerOptions);
-export const swaggerDocs = swaggerUi; // exporting the middleware for setup
+export const swaggerUiMiddleware = swaggerUi;
