@@ -43,18 +43,24 @@ app.use(passport.session());
 // For origin, use a function to dynamically allow (avoids wildcard issues with credentials).
 // In prod, specify exact origins (e.g., your frontend URL).
 app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (e.g., server-to-server) or from localhost/Swagger.
-        if (!origin || origin.includes('localhost')) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-    credentials: true  // Key fix: Allows cookies/credentials to be sent/received.
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "http://localhost:3500",
+      "https://cse341-project-k4tz.onrender.com"
+    ];
+
+    // Allow requests with no origin (e.g., server-to-server) or from allowed origins
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+  credentials: true
 }));
+
 
 // Passport GitHub Strategy: Unchanged.
 passport.use(
